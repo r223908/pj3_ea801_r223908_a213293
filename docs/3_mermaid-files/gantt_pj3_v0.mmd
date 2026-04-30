@@ -1,0 +1,25 @@
+gantt
+    title Planejamento - Projeto: Motor Virtual
+    dateFormat  DD-MM-YYYY
+    axisFormat  %d/%m
+    todayMarker off
+    
+    section Definição
+    Definição do Escopo e Problema           :a1, 29-04-2026, 2d
+    Diagrama de Blocos                       :a2, after a1, 1d
+    Levantamento de Requisitos               :a3, after a1, 5d
+    Levantamento de Materiais                :a4, after a2, 5d
+    Entrega da Proposta de Projeto           :milestone, m1, after a4, 07-05-2026
+
+    section Desenvolvimento
+    Setup BitDogLab                          :b1, after m1, 1d
+    Desenvolvimento CAD 3D                   :b2, after m1, 7d
+    Desenvolvimento Placa Shield             :b3, after m1, 7d
+    Programação                              :b4, after b1, 9d
+    Impressão das peças e Montagem           :b5, after b2, 4d
+    Testes                                   :b6, after b5, 9d
+
+    section Finalização
+    Validação                                :c1, after b6, 4d
+    Relatório Final                          :c2, after c1, 10-06-2026
+    Entrega do Projeto                       :milestone, after c2, 0d

@@ -1,0 +1,30 @@
+flowchart LR
+    %% Bloco de Entradas
+    subgraph Entradas [Entradas do Sistema]
+        direction TB
+        App[Dispositivo Remoto <br> Aplicativo Mobile/PC]
+        Botoes[Botões Físicos <br> A, B e C]
+    end
+
+    %% Bloco de Processamento
+    subgraph Processamento [Controle]
+        RPi[Placa BitDogLab V7 <br> + Módulo Bluetooth]
+    end
+
+    %% Bloco de Saídas
+    subgraph Saidas [Saídas do Sistema]
+        direction TB
+        M1[Motor Primário <br> Eixo de Rotação]
+        M2[Atuador Linear <br> Posição da Correia CVT]
+        D[Display OLED <br> IHM e Telemetria]
+        LED[Matriz de LEDs <br> Animação Visual]
+    end
+
+    %% Conexões lógicas e de dados
+    App -- "Comunicação Sem Fio + UART <br> (Comandos do Usuário)" --> RPi
+    Botoes -- "Interrupção de Hardware <br> (Seleção de Cor)" --> RPi
+    
+    RPi -- "Sinal PWM e Direção <br> (Aceleração e Rampa)" --> M1
+    RPi -- "Sinal PWM e Direção <br> (Ajuste Assíncrono do Câmbio)" --> M2
+    RPi -- "Comunicação I2C <br> (Status do Sistema)" --> D
+    RPi -- "Sinal Digital <br> (Feedback de Giro e Marcha)" --> LED
