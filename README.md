@@ -26,17 +26,24 @@ Para controle da posição do câmbio CVT, é utilizado um sensor VL6180X *Time 
 
 <figure align="center">
     <figcaption><i>Figura 1: Diagrama de blocos do projeto.</i></figcaption>
-    <img src="/docs/2_images/blockDiag_pj3_v0.png" width="80%" style="border: 2px solid black; border-radius: 8px;" alt="Diagrama de blocos do projeto">
+    <img src="/docs/2_images/blockDiag_pj3_v0.png" width="70%" style="border: 2px solid black; border-radius: 8px;" alt="Diagrama de blocos do projeto">
     </br>
 </figure>
 
 <figure align="center">
     <figcaption>
-        <i>Figura 2: Projeto em CAD 3D (nova versão - preliminar). <br> 
-        PDF 3D (abrir com Foxit ou Adobe): <a href="https://github.com/r223908/pj3_ea801_r223908_a213293/blob/main/docs/6_CAD-files/ea801_pj3_cvt_pdf3D.PDF">/docs/6_CAD-files/ea801_pj3_cvt_pdf3D</a></i>
+        <i>Figura 2: Projeto em CAD 3D (nova versão - preliminar).</i>
     </figcaption>
-    <img src="/docs/2_images/cvt_cad-1_pj3_v0.png" width="40%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado">
-    <img src="/docs/2_images/cvt_cad-2_pj3_v0.png" width="44.8%" style="border: 2px solid black; border-radius: 8px;" alt="Outra Imagem">
+    <table align="center">
+    <tr>
+    <td align="center">
+        <img src="/docs/2_images/cvt_cad-1_pj3_v0.png" width="90%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado"><br>
+    </td>
+    <td align="center">
+        <img src="/docs/2_images/cvt_cad-2_pj3_v0.png" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Outra Imagem"><br>
+    </td>
+    </tr>
+</table>
     <figcaption>
         PDF 3D (abrir com Foxit ou Adobe): <a href="https://github.com/r223908/pj3_ea801_r223908_a213293/blob/main/docs/6_CAD-files/ea801_pj3_cvt_pdf3D.PDF">/docs/6_CAD-files/ea801_pj3_cvt_pdf3D</a></i>
     </figcaption>
