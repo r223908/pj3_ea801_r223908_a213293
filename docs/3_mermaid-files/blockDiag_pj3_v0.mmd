@@ -1,30 +1,33 @@
-flowchart LR
-    %% Bloco de Entradas
+%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
+flowchart TD
+    %% Bloco de Entradas (Topo)
     subgraph Entradas [Entradas do Sistema]
-        direction TB
-        App[Dispositivo Remoto <br> Aplicativo Mobile/PC]
+        App[App/PC Remoto] -- "Comunicação Sem Fio" --> HC05[Módulo Bluetooth <br> HC05]
         Botoes[Botões Físicos <br> A, B e C]
+        VL[Medição de Distância <br> Sensor VL6180X ToF]
     end
 
-    %% Bloco de Processamento
-    subgraph Processamento [Controle]
-        RPi[Placa BitDogLab V7 <br> + Módulo Bluetooth]
-    end
+    %% Controle Central (Meio - sem subgrafo para facilitar o roteamento)
+    RPi([Placa BitDogLab V7 <br> Controle Central])
 
-    %% Bloco de Saídas
+    %% Bloco de Saídas (Base)
     subgraph Saidas [Saídas do Sistema]
-        direction TB
         M1[Motor Primário <br> Eixo de Rotação]
-        M2[Atuador Linear <br> Posição da Correia CVT]
+        M2[Atuador Linear <br> Posição da Correia]
         D[Display OLED <br> IHM e Telemetria]
         LED[Matriz de LEDs <br> Animação Visual]
     end
 
-    %% Conexões lógicas e de dados
-    App -- "Comunicação Sem Fio + UART <br> (Comandos do Usuário)" --> RPi
-    Botoes -- "Interrupção de Hardware <br> (Seleção de Cor)" --> RPi
+    %% Conexões Entradas -> Controle
+    HC05 -- "UART (Comandos) <br> + STATE" --> RPi
+    Botoes -- "Interrupção <br> Alteração de cor" --> RPi
+    VL -- "I2C1 <br> (Posição)" --> RPi
     
-    RPi -- "Sinal PWM e Direção <br> (Aceleração e Rampa)" --> M1
-    RPi -- "Sinal PWM e Direção <br> (Ajuste Assíncrono do Câmbio)" --> M2
-    RPi -- "Comunicação I2C <br> (Status do Sistema)" --> D
-    RPi -- "Sinal Digital <br> (Feedback de Giro e Marcha)" --> LED
+    %% Conexões Controle -> Saídas
+    RPi -- "PWM (Aceleração <br> Constante)" --> M1
+    RPi -- "PWM (Malha Fechada)" --> M2
+    RPi -- "I2C0 (Status)" --> D
+    RPi -- "Digital (Giro/Marcha)" --> LED
+
+    %% Feedback físico (Retorno da Base para o Topo)
+    M2 -. "Deslocamento Físico" .-> VL

@@ -1,6 +1,6 @@
 ### EA801 - PROJETO 3
 
-### Câmbio CVT (versão 2) com BitDogLab V7
+### Câmbio CVT (v2) com BitDogLab V7
 
 **Autores:** 
 - Raul Galdino Tancredo (RA: 223908 / [@r223908](https://github.com/r223908))
@@ -8,9 +8,9 @@
 
 **Professor:** Eric Rohmer
 
-* **Proposta de Projeto**: [Proposta em G-Docs](tbd) (acesso "Comentador" para UNICAMP)
-* **Relatório de projeto**: [Relatório em G-Docs](tbd) (acesso "Comentador" para UNICAMP)
-* **Demonstração do projeto no YouTube**: [Vídeo](tbd)
+* **Proposta de Projeto**: [Proposta em G-Docs](https://docs.google.com/document/d/12xUf4pp4VCcdJPwbZHKw6q6G0AQpYL8BC8JdEnKDbEA/edit?usp=sharing) (acesso "Comentador" para UNICAMP)
+* **Relatório de projeto (in-work)**: [Relatório em G-Docs](tbd) (acesso "Comentador" para UNICAMP)
+* **Demonstração do projeto no YouTube (in-work)**: [Vídeo](tbd)
 
 ---
 ## ⚙️ DESCRIÇÃO DO SISTEMA (v2)
@@ -22,38 +22,34 @@ O controle é dividido em dois eixos de atuação:
 
 A interface homem-máquina (IHM) é realizada de forma remota através de um módulo Bluetooth (conectado à interface UART da placa) com a integração de um aplicativo no celular. O display OLED da placa é utilizado para exibir a telemetria em tempo real.
 
-
+Para controle da posição do câmbio CVT, é utilizado um sensor VL6180X *Time of Flight* (TOF). A partir do projeto original realizado no PJ2 da disciplina, foram feitas diversas melhorias quanto à parte mecânica e elétrica do sistema.
 
 <figure align="center">
     <figcaption><i>Figura 1: Diagrama de blocos do projeto.</i></figcaption>
-    <img src="/docs/images/blockDiag_v1.png" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Diagrama de blocos do projeto">
+    <img src="/docs/2_images/blockDiag_pj3_v0.png" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Diagrama de blocos do projeto">
     </br>
 </figure>
 
 <figure align="center">
-    <figcaption><i>Figura 2: Projeto em CAD 3D.</i></figcaption>
-    <img src="/docs/images/cvt_cad_v1.png" width="45%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado">
-</figure>
+    <figcaption><i>Figura 2: Projeto em CAD 3D (nova versão - preliminar). <br> PDF 3D em /docs/6_CAD-files/ea801_pj3_cvt_pdf3D</i></figcaption>
+    <img src="/docs/2_images/cvt_cad-1_pj3_v0.png" width="45%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado">
+    <img src="/docs/2_images/cvt_cad-2_pj3_v0.png" width="49.8%" style="border: 2px solid black; border-radius: 8px;" alt="Outra Imagem">
 
-<figure align="center">
-    <figcaption><i>Figura 3: Equipamento montado e testado.</i></figcaption>
-    <img src="/docs/images/montagem/IMG-20260426-WA0001.jpeg" width="80%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado">
 </figure>
 
 
 ---
 ## ❗REQUISITOS (in-work)
 - 1x BitDogLab V7.
-- 2x Ponte H L293D (CI) para ambos os motores.
-- 1x Protoboard 400 pinos ou fazer toda a ligação na placa de fenolite com solda.
+- 1x Ponte H L293D (CI) para ambos os motores.
+- 1x Sensor ToF  VL6180X
+- Placa de fenolite para a shield da BitDogLab
 - Jumpers M-M e M-F.
-- 1x Adaptador de 4 pilhas AA (6 Vcc para os motores e alimentação da placa).
-- 4x pilhas AA (1,5 Vcc).
+- 3x pilhas 18650: 2x para os motores e 1x para a placa
 - Cabo micro USB (usar apenas para passar a programação, com as pilhas desconectadas).
 - Módulo Bluetooth HC05.
-- Anel o-ring ou elástico.
-- Parafusos para montagem (alguns precisam ser colados na base)
-    - 2x Parafuso ISO 4017 M4x20 (Eixos do cone de saída)
+- Anel o-ring ou elástico para o câmbio.
+- Elementos de fixação
     - 1x Parafuso ISO 4017 M6x15 (Contra-eixo do cone principal)
     - 1x Parafuso ISO 4017 M6x60 (fuso do CVT)
     - 2x Porca ISO 4032 M6 (Espaçador no fuso do CVT e guia da polia)
