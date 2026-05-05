@@ -14,15 +14,13 @@
 
 ---
 ## ⚙️ DESCRIÇÃO DO SISTEMA (v2)
-O sistema desenvolvido consiste na implementação de uma bancada de testes para um **Câmbio de Transmissão Continuamente Variável (CVT)** simulado, controlado remotamente via interface sem fio. O projeto utiliza a plataforma BitDogLab V7 como unidade central de processamento, integrando comunicação serial, controle de potência e telemetria.
-
-O controle é dividido em dois eixos de atuação:
+O sistema desenvolvido consiste na implementação de uma bancada de testes para um **Câmbio de Transmissão Continuamente Variável (CVT)** simulado, controlado remotamente via interface sem fio. O projeto utiliza a plataforma BitDogLab V7 como unidade central de processamento, integrando comunicação serial, controle de potência e telemetria. O controle é dividido em dois eixos de atuação:
 1. Eixo motor: Um motor de corrente contínua (DC), simulando a rotação do motor primário, controlado via PWM mas com a rotação travada em 100%.
 2. Atuador do câmbio: Um segundo motor acoplado a um sistema de fuso (atuador linear), responsável por alterar a posição física da correia do câmbio CVT.
 
 A interface homem-máquina (IHM) é realizada de forma remota através de um módulo Bluetooth (conectado à interface UART da placa) com a integração de um aplicativo no celular. O display OLED da placa é utilizado para exibir a telemetria em tempo real.
 
-Para controle da posição do câmbio CVT, é utilizado um sensor VL6180X *Time of Flight* (TOF). A partir do projeto original realizado no PJ2 da disciplina, foram feitas diversas melhorias quanto à parte mecânica e elétrica do sistema.
+A realimentação da posição do atuador do CVT é realizada por meio de um sensor de distância óptico Time of Flight (ToF) VL6180X. Cabe ressaltar que o atual protótipo apresenta diversas otimizações mecânicas e elétricas em relação ao projeto original desenvolvido na etapa anterior da disciplina (PJ2).
 
 <figure align="center">
     <figcaption><i>Figura 1: Diagrama de blocos do projeto.</i></figcaption>
@@ -54,27 +52,28 @@ Para controle da posição do câmbio CVT, é utilizado um sensor VL6180X *Time 
 ## ❗REQUISITOS (in-work)
 - 1x BitDogLab V7.
 - 1x Ponte H L293D (CI) para ambos os motores.
-- 1x Sensor ToF  VL6180X
+- 1x Sensor ToF VL6180X
 - Placa de fenolite para a shield da BitDogLab
 - Jumpers M-M e M-F.
 - 3x pilhas 18650: 2x para os motores e 1x para a placa
 - Cabo micro USB (usar apenas para passar a programação, com as pilhas desconectadas).
-- Módulo Bluetooth HC05.
+- Módulo Bluetooth HC-05.
 - Anel o-ring ou elástico para o câmbio.
 - Elementos de fixação
     - 1x Parafuso ISO 4017 M6x15 (Contra-eixo do cone principal)
     - 1x Parafuso ISO 4017 M6x60 (fuso do CVT)
     - 2x Porca ISO 4032 M6 (Espaçador no fuso do CVT e guia da polia)
     - 1x Arruela ISO 7093 Ø6 (Espaçador no fuso do CVT)
-    - 4x Parafuso autoatarrachante 9/64"x1" (ou 1/8"x1" - Ø x Comprimento)
+    - 4x Parafuso auto atarrachante 9/64"x1" (ou 1/8"x1" - Ø x Comprimento)
 - Peças impressas em 3D
 - Ambiente de desenvolvimento configurado para MicroPython.
 
 ---
 ## 🔧CONFIGURAÇÕES
-- BitDogLab V7: Transferir os arquivos **main.py**, **setup.py** e **ssd1306.py** para a placa via USB.
+- BitDogLab V7: Transferir os arquivos **main.py**, **setup.py**, **vl6180x.py** e **ssd1306.py** para a placa via USB.
 - Ligação das pontes H e motores conforme **/docs/images/schematic_pj3.png**
 - Módulo Bluetooth HC05 configurado com AT Mode usando **hc05_atMode_config.py**
+- Sensor VL6180X calibrado conforme **/libs/tools/vl6180x_calibrate**
 
 ---
 ## 📚 REFERÊNCIAS
@@ -92,15 +91,16 @@ Para controle da posição do câmbio CVT, é utilizado um sensor VL6180X *Time 
 ``` text
 ├── .vscode/                        → Configurações para o ambiente de trabalho no VSCode
 ├── docs/                           → Documentação do projeto
-│   ├── 1_datasheets/               → Folhas de dados dos equipamentos utilizados
+│   ├── 1_folhas-de-dados/          → Folhas de dados dos equipamentos utilizados
 │   ├── 2_images/                   → Imagens para relatórios e referências
 │   ├── 3_mermaid-files/            → arquivos para gerar os diagramas de bloco e gantt
 │   ├── 4_kicad-pj3/                → Projeto KiCad para a plaquinha shield
-│   ├── 5_video/                    → Vídeo original
+│   ├── 5_video/                    → Vídeo do equipamento em operação
 │   ├── 6_CAD-files/                → Arquivos .stl e PDF_3D da montagem
 │   └── (...)                       → Proposta e relatório
-├── libs/                           
-│   └── (...)                       → Bibliotecas e arquivos de configuração
+├── libs/
+│   ├── tools/                      → Códigos para configuração dos equipamentos                           
+│   └── (...)                       → Bibliotecas
 ├── src/                            
 │   └── main.py                     → Código-fonte
 ├── .micropico                      → Arquivo necessário para a extensão Pi PICO no VSCODE
