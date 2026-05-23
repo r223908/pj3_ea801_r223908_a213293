@@ -7,26 +7,27 @@ Author: Ledbelly2142 (https://github.com/Ledbelly2142)
 import ustruct
 import struct
 import time
-from machine import I2C
+from machine import I2C, Pin
 
-# i2c = I2C(0, I2C.MASTER, baudrate=100000, pins=('P8', 'P9'))
+i2c_tof = I2C(0, sda=Pin(8), scl=Pin(9))
+offsetVal = 35
 
 class Sensor:
     def __init__(self, i2c, address=0x29):
-        self.i2c = i2c
+        self.i2c_tof = i2c
         self._address = address
         self.default_settings()
         self.init()
 
     def myWrite16(self, register, regValue):
         """ write a byte to specified 16 bit register """
-        return self.i2c.writeto_mem(self._address, register, bytearray([regValue]), addrsize=16), 'big'
+        return self.i2c_tof.writeto_mem(self._address, register, bytearray([regValue]), addrsize=16), 'big'
 
     def myRead16(self, register):
         """read 1 bit from 16 byte register"""
-        # i2c.readfrom_mem(0x29, 0x0016, 1, addrsize=16)
+        # i2c_tof.readfrom_mem(0x29, 0x0016, 1, addrsize=16)
         value = int.from_bytes(
-            self.i2c.readfrom_mem(self._address, register, 1, addrsize=16),
+            self.i2c_tof.readfrom_mem(self._address, register, 1, addrsize=16),
             'big'
         )
         return value & 0xFFFF
@@ -82,7 +83,7 @@ class Sensor:
         self.myWrite16(0x002E, 0x01)
 
         # Optional settings from datasheet
-        self.myWrite16(0x0024, 100) # Zera o offset cravado na memória
+        self.myWrite16(0x0024, 100) # Zera o offset cravado na memória      100, 
         self.myWrite16(0x001B, 0x09)  # Set default ranging inter-measurement
         # period to 100ms
         self.myWrite16(0x003E, 0x0A)  # Set default ALS inter-measurement
@@ -143,10 +144,10 @@ class Sensor:
             return None 
             
         # DESFAZ O HACK: Subtrai os 50mm
-        distancia_real = distancia_crua - 50
+        distancia_real = distancia_crua
         
         # Trava em 0 caso a leitura caia para números negativos (ruído)
         if distancia_real < 0:
             distancia_real = 0
             
-        return distancia_real-40
+        return (0 if ((distancia_real-offsetVal)<0) else (distancia_real-offsetVal))
