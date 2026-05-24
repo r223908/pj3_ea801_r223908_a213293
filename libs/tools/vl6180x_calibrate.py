@@ -7,7 +7,7 @@ import vl6180x
 1 - Vin - VERMELHO (VM) <-- 3V3
 2 - 2v8 - VERDE (VD)
 3 - GND - PRETO (PT) <-- GND
-4 - GPIO - AZUL (AZ) <-- GP15
+4 - GPIO - AZUL (AZ)
 5 - SHDN - ROXO (RX)
 6 - SCL - CINZA (CZ) <-- GP9
 7 - SDA - BRANCO (BR) <-- GP8

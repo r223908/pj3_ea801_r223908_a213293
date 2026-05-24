@@ -3,6 +3,16 @@ GitHub: https://github.com/Ledbelly2142/VL6180X/blob/master/vl6180x.py
 Author: Ledbelly2142 (https://github.com/Ledbelly2142)
 """
 
+"""
+1 - Vin - VERMELHO (VM) <-- 3V3
+2 - 2v8 - VERDE (VD)
+3 - GND - PRETO (PT) <-- GND
+4 - GPIO - AZUL (AZ)
+5 - SHDN - ROXO (RX)
+6 - SCL - CINZA (CZ) <-- GP9
+7 - SDA - BRANCO (BR) <-- GP8
+"""
+
 
 import ustruct
 import struct
