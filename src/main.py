@@ -111,6 +111,7 @@ print("Aguardando comandos Bluetooth...")
 
 while True:
     tempo_atual = utime.ticks_ms()
+    print(f"ToF: {sensor_tof.range()} mm")
 
     # 1. ATUALIZAÇÃO DO DISPLAY OLED
     if utime.ticks_diff(tempo_atual, ultimo_tempo_oled) >= ATT_DISPLAY_MS:
@@ -189,7 +190,7 @@ while True:
             Mcambio_PWM.duty_u16(0)
             cvt_em_movimento = False
 
-    # 4. ANIMAÇÃO DA MATRIZ DE LEDS PARA REPLICAR O SENTIDO DE GIRO DO MOTOR PRINCIPAL
+    """# 4. ANIMAÇÃO DA MATRIZ DE LEDS PARA REPLICAR O SENTIDO DE GIRO DO MOTOR PRINCIPAL
     np.fill((0, 0, 0))
     if posicao_cvt == 0 or velocidade_atual == 0:
         np[LED_MEIO] = cor_travada 
@@ -208,6 +209,6 @@ while True:
             
         for led in FRAMES_MOTOR[indice_frame]:
             np[led] = cor_travada
-    np.write()
+    np.write()"""
     
     utime.sleep(0.01)

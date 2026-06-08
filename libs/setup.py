@@ -49,20 +49,22 @@ FRAMES_MOTOR = [[14, 13], [15, 16], [16, 24], [16, 23], [17, 22],
 
 # 7. Configuração dos controles de Motor (Ponte H) e PWM da placa
 # IMPORTANTE: GPIO 0 e 1 são do Bluetooth. Vamos usar os pinos livres do conector IDC.
-# Motor Principal (Eixo)
+
+# Motor Principal (Eixo) - Assumindo ligação no lado Esquerdo do L293D (Pinos 1, 2 e 7)
 Mprincipal_DIR1 = Pin(16, Pin.OUT)
 Mprincipal_DIR2 = Pin(17, Pin.OUT)
-Mprincipal_PWM  = PWM(Pin(18))
+Mprincipal_PWM  = PWM(Pin(18))       # GP28 vai no pino 1 (EN1,2) do L293D
 Mprincipal_PWM.freq(1000)
 Mprincipal_PWM.duty_u16(0)
 TEMPO_RAMPA_MS = 1000
-# Motor Câmbio (Atuador CVT)
-Mcambio_DIR1 = Pin(19, Pin.OUT)
-Mcambio_DIR2 = Pin(20, Pin.OUT)
-Mcambio_PWM  = PWM(Pin(28))
+
+# Motor Câmbio (Atuador CVT) - EXATAMENTE COMO NO SEU ESQUEMÁTICO (Lado Direito)
+Mcambio_DIR1 = Pin(19, Pin.OUT)      # GP18 (Fio Roxo) vai no IN3
+Mcambio_DIR2 = Pin(20, Pin.OUT)      # GP20 (Fio Branco) vai no IN4
+Mcambio_PWM  = PWM(Pin(28))          # GP19 (Fio Cinza) vai no EN3,4 (Enable/PWM)
 Mcambio_PWM.freq(1000)
 Mcambio_PWM.duty_u16(0)
-TEMPO_PASSO_CVT_MS = 2000  # 2000 ms = 2 segundos
+TEMPO_PASSO_CVT_MS = 5000  # 2000 ms = 2 segundos
 
 # 8. Configura o LED Azul da placa (GPIO 12) para feedback visual
 led_azul = machine.Pin(12, machine.Pin.OUT)
