@@ -4,8 +4,8 @@ from setup import *
 cvt_em_movimento = False
 direcao_cvt = 0        # 1 avança (diminui mm), -1 recua (aumenta mm)
 alvo_tof_mm = 0.0      # Distância que queremos atingir
-janela_leituras = []   # Buffer para a Média Móvel
-TAMANHO_JANELA = 30     # Média das últimas 15 leituras
+janela_leituras = []   # type: list[float]
+TAMANHO_JANELA = 30     # Média das últimas 30 leituras
 PASSO_MM = 4.0         # Quantos mm o câmbio anda por vez
 MAX_DIST_MM = 24.0     # Fundo do câmbio (0%)
 MIN_DIST_MM = 1.0      # Batente do câmbio (100%)
@@ -24,19 +24,20 @@ def sincronizar_posicao_cvt():
     # Coleta 10 amostras rápidas para ignorar ruídos de leitura única
     for _ in range(10):
         leitura = sensor_tof.range()
-        if leitura > 0: # type: ignore
+        if leitura is not None and leitura > 0: 
             leituras_locais.append(leitura)
         utime.sleep(0.01)
 
     if len(leituras_locais) > 0:
         distancia_calculada = sum(leituras_locais) / len(leituras_locais)
     else:
-        distancia_calculada = MAX_DIST_MM # Segurança
+        # Se falhar totalmente por erro I2C, assume a última posição segura conhecida
+        distancia_calculada = MAX_DIST_MM 
 
     # Trava dentro dos limites físicos do projeto
     distancia_calculada = max(MIN_DIST_MM, min(MAX_DIST_MM, distancia_calculada))
 
-    # Atualiza a variável global de porcentagem
+    # 1. Atualiza a variável global de porcentagem
     porcentagem_calculada = ((MAX_DIST_MM - distancia_calculada) / (MAX_DIST_MM - MIN_DIST_MM)) * 100
     posicao_cvt = max(0, min(100, int(porcentagem_calculada)))
     
@@ -181,13 +182,11 @@ while True:
             direcao_cvt = -1
             
             # --- CHAMADA DO MÉTODO DURANTE O FUNCIONAMENTO ---
-            # Zera o passado e pega a posição exata de agora de forma estável
             leitura_estavel = sincronizar_posicao_cvt()
             
             # Inicializa a janela com o valor atualizado e limpo
             janela_leituras = [leitura_estavel] * TAMANHO_JANELA
             
-            # Dá a partida física no motor para o retorno
             iniciar_movimento_cvt(direcao_cvt)
             cvt_em_movimento = True
             print(f"BOTAO A: Homing iniciado a partir de {leitura_estavel:.1f} mm...")
@@ -234,22 +233,24 @@ while True:
                     elif comando == triangleDir:    # Sobe marcha (Avança / Diminui mm)
                         if not cvt_em_movimento:
                             leitura_atual = sensor_tof.range()
-                            if leitura_atual > MIN_DIST_MM: # type: ignore
-                                alvo_tof_mm = max(MIN_DIST_MM, leitura_atual - PASSO_MM) # type: ignore
-                                direcao_cvt = 1
-                                iniciar_movimento_cvt(direcao_cvt)
-                                cvt_em_movimento = True
-                                janela_leituras = [leitura_atual] * TAMANHO_JANELA 
+                            if leitura_atual is not None:
+                                if leitura_atual > MIN_DIST_MM: 
+                                    alvo_tof_mm = max(MIN_DIST_MM, leitura_atual - PASSO_MM) 
+                                    direcao_cvt = 1
+                                    iniciar_movimento_cvt(direcao_cvt)
+                                    cvt_em_movimento = True
+                                    janela_leituras = [leitura_atual] * TAMANHO_JANELA 
 
                     elif comando == crossDir:       # Desce marcha (Recua / Aumenta mm)
                         if not cvt_em_movimento: 
                             leitura_atual = sensor_tof.range()
-                            if leitura_atual < MAX_DIST_MM: # type: ignore
-                                alvo_tof_mm = min(MAX_DIST_MM, leitura_atual + PASSO_MM) # type: ignore
-                                direcao_cvt = -1
-                                iniciar_movimento_cvt(direcao_cvt)
-                                cvt_em_movimento = True
-                                janela_leituras = [leitura_atual] * TAMANHO_JANELA
+                            if leitura_atual is not None:
+                                if leitura_atual < MAX_DIST_MM: 
+                                    alvo_tof_mm = min(MAX_DIST_MM, leitura_atual + PASSO_MM) 
+                                    direcao_cvt = -1
+                                    iniciar_movimento_cvt(direcao_cvt)
+                                    cvt_em_movimento = True
+                                    janela_leituras = [leitura_atual] * TAMANHO_JANELA
                         
                     elif comando == pauseDir:
                         velocidade_atual = 0
@@ -268,21 +269,25 @@ while True:
         nova_leitura = sensor_tof.range()
         chegou_no_alvo = False
         
+        # Se houver erro I2C (None) em movimento, assume o último dado estável para não travar o loop
+        if nova_leitura is None:
+            nova_leitura = janela_leituras[-1] if len(janela_leituras) > 0 else MAX_DIST_MM
+        
         # --- FILTRO INTELIGENTE E ANTITRAVAMENTO ---
         if nova_leitura == 0:
-            if direcao_cvt == 1 and len(janela_leituras) > 0 and janela_leituras[-1] <= (MIN_DIST_MM + 3.0):
+            if direcao_cvt == 1 and len(janela_leituras) > 0 and janela_leituras[-1] <= (MIN_DIST_MM + 3.0): 
                 chegou_no_alvo = True
                 nova_leitura = MIN_DIST_MM
                 print("Seguranca: Sensor detectou colisao/fim de curso em 0mm!")
             else:
                 nova_leitura = janela_leituras[-1] if len(janela_leituras) > 0 else MAX_DIST_MM
-        elif nova_leitura > 50:  # type: ignore
+        elif nova_leitura > 50:  
             nova_leitura = janela_leituras[-1] if len(janela_leituras) > 0 else MAX_DIST_MM
             
         janela_leituras.pop(0)
-        janela_leituras.append(nova_leitura) # type: ignore
+        janela_leituras.append(nova_leitura) 
         
-        media_atual = sum(janela_leituras) / TAMANHO_JANELA # type: ignore
+        media_atual = sum(janela_leituras) / TAMANHO_JANELA 
         
         porcentagem = ((MAX_DIST_MM - media_atual) / (MAX_DIST_MM - MIN_DIST_MM)) * 100
         posicao_cvt = max(0, min(100, int(porcentagem)))
