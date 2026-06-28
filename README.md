@@ -23,14 +23,14 @@ A interface homem-máquina (IHM) é realizada de forma remota através de um mó
 A realimentação da posição do atuador do CVT é realizada por meio de um sensor de distância óptico Time of Flight (ToF) VL6180X. Cabe ressaltar que o atual protótipo apresenta diversas otimizações mecânicas e elétricas em relação ao projeto original desenvolvido na etapa anterior da disciplina (PJ2).
 
 <figure align="center">
-    <figcaption><i>Figura 1: Diagrama de blocos do projeto.</i></figcaption>
+    <figcaption><i>Diagrama de blocos do projeto.</i></figcaption>
     <img src="/docs/2_images/blockDiag_pj3_v0.png" width="70%" style="border: 2px solid black; border-radius: 8px;" alt="Diagrama de blocos do projeto">
     </br>
 </figure>
 
 <figure align="center">
     <figcaption>
-        <i>Figura 2: Projeto em CAD 3D (PJ3).
+        <i>Projeto em CAD 3D (PJ3).
         <br>PDF 3D (abrir com Foxit ou Adobe): <a href="https://github.com/r223908/pj3_ea801_r223908_a213293/blob/main/docs/6_CAD-files/ea801_pj3_cvt_pdf3D.PDF">/docs/6_CAD-files/ea801_pj3_cvt_pdf3D</a></i></i>
     </figcaption>
     <table align="center">
@@ -47,7 +47,7 @@ A realimentação da posição do atuador do CVT é realizada por meio de um sen
 
 <figure align="center">
     <figcaption>
-        <i>Figura 3: Equipamento montado #1 (PJ3).</i>
+        <i>Equipamento montado #1 (PJ3).</i>
     </figcaption>
     <table align="center">
     <tr>
@@ -63,7 +63,7 @@ A realimentação da posição do atuador do CVT é realizada por meio de um sen
 
 <figure align="center">
     <figcaption>
-        <i>Figura 4: Equipamento montado #2 (PJ3).</i>
+        <i>Equipamento montado #2 (PJ3).</i>
     </figcaption>
     <table align="center">
     <tr>
@@ -78,7 +78,7 @@ A realimentação da posição do atuador do CVT é realizada por meio de um sen
 </figure>
 
 <figure align="center">
-    <figcaption><i>Figura 5: Equipamento montado #3 (PJ3).</i></figcaption>
+    <figcaption><i>Equipamento montado #3 (PJ3).</i></figcaption>
     <img src="/docs/2_images/1_montagem/geral_12.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Diagrama de blocos do projeto">
     </br>
 </figure>
