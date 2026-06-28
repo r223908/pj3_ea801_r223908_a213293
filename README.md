@@ -52,10 +52,10 @@ A realimentação da posição do atuador do CVT é realizada por meio de um sen
     <table align="center">
     <tr>
     <td align="center">
-        <img src="/docs/2_images/montagem/geral_7.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado"><br>
+        <img src="/docs/2_images/1_montagem/geral_7.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado"><br>
     </td>
     <td align="center">
-        <img src="/docs/2_images/montagem/geral_9.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Outra Imagem"><br>
+        <img src="/docs/2_images/1_montagem/geral_9.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Outra Imagem"><br>
     </td>
     </tr>
 </table>
@@ -68,10 +68,10 @@ A realimentação da posição do atuador do CVT é realizada por meio de um sen
     <table align="center">
     <tr>
     <td align="center">
-        <img src="/docs/2_images/montagem/geral_10.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado"><br>
+        <img src="/docs/2_images/1_montagem/geral_10.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado"><br>
     </td>
     <td align="center">
-        <img src="/docs/2_images/montagem/geral_11.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Outra Imagem"><br>
+        <img src="/docs/2_images/1_montagem/geral_11.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Outra Imagem"><br>
     </td>
     </tr>
 </table>
@@ -79,7 +79,7 @@ A realimentação da posição do atuador do CVT é realizada por meio de um sen
 
 <figure align="center">
     <figcaption><i>Figura 5: Equipamento montado #3 (PJ3).</i></figcaption>
-    <img src="/docs/2_images/montagem/geral_12.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Diagrama de blocos do projeto">
+    <img src="/docs/2_images/1_montagem/geral_12.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Diagrama de blocos do projeto">
     </br>
 </figure>
 
