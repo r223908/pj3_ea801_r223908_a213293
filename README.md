@@ -84,7 +84,7 @@ A realimentação da posição do atuador do CVT é realizada por meio de um sen
 </figure>
 
 ---
-## ❗REQUISITOS (in-work)
+## ❗REQUISITOS
 - 1x BitDogLab V7.
 - 2x motores DC com caixa de redução
 - 2x capacitores cerâmicos 100 nF (cód.: 104)
