@@ -30,32 +30,70 @@ A realimentação da posição do atuador do CVT é realizada por meio de um sen
 
 <figure align="center">
     <figcaption>
-        <i>Figura 2: Projeto em CAD 3D (nova versão - preliminar).</i>
+        <i>Figura 2: Projeto em CAD 3D (PJ3).
+        <br>PDF 3D (abrir com Foxit ou Adobe): <a href="https://github.com/r223908/pj3_ea801_r223908_a213293/blob/main/docs/6_CAD-files/ea801_pj3_cvt_pdf3D.PDF">/docs/6_CAD-files/ea801_pj3_cvt_pdf3D</a></i></i>
     </figcaption>
     <table align="center">
     <tr>
     <td align="center">
-        <img src="/docs/2_images/cvt_cad-1_pj3_v0.png" width="90%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado"><br>
+        <img src="/docs/2_images/cvt_cad-1_pj3_v1.png" width="90%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado"><br>
     </td>
     <td align="center">
-        <img src="/docs/2_images/cvt_cad-2_pj3_v0.png" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Outra Imagem"><br>
+        <img src="/docs/2_images/cvt_cad-2_pj3_v1.png" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Outra Imagem"><br>
     </td>
     </tr>
 </table>
-    <figcaption>
-        PDF 3D (abrir com Foxit ou Adobe): <a href="https://github.com/r223908/pj3_ea801_r223908_a213293/blob/main/docs/6_CAD-files/ea801_pj3_cvt_pdf3D.PDF">/docs/6_CAD-files/ea801_pj3_cvt_pdf3D</a></i>
-    </figcaption>
 </figure>
 
+<figure align="center">
+    <figcaption>
+        <i>Figura 3: Equipamento montado #1 (PJ3).</i>
+    </figcaption>
+    <table align="center">
+    <tr>
+    <td align="center">
+        <img src="/docs/2_images/montagem/geral_7.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado"><br>
+    </td>
+    <td align="center">
+        <img src="/docs/2_images/montagem/geral_9.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Outra Imagem"><br>
+    </td>
+    </tr>
+</table>
+</figure>
+
+<figure align="center">
+    <figcaption>
+        <i>Figura 4: Equipamento montado #2 (PJ3).</i>
+    </figcaption>
+    <table align="center">
+    <tr>
+    <td align="center">
+        <img src="/docs/2_images/montagem/geral_10.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Equipamento montado"><br>
+    </td>
+    <td align="center">
+        <img src="/docs/2_images/montagem/geral_11.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Outra Imagem"><br>
+    </td>
+    </tr>
+</table>
+</figure>
+
+<figure align="center">
+    <figcaption><i>Figura 5: Equipamento montado #3 (PJ3).</i></figcaption>
+    <img src="/docs/2_images/montagem/geral_12.jpg" width="100%" style="border: 2px solid black; border-radius: 8px;" alt="Diagrama de blocos do projeto">
+    </br>
+</figure>
 
 ---
 ## ❗REQUISITOS (in-work)
 - 1x BitDogLab V7.
+- 2x motores DC com caixa de redução
+- 2x capacitores cerâmicos 100 nF (cód.: 104)
 - 1x Ponte H L293D (CI) para ambos os motores.
 - 1x Sensor ToF VL6180X
 - Placa de fenolite para a shield da BitDogLab
 - Jumpers M-M e M-F.
 - 3x pilhas 18650: 2x para os motores e 1x para a placa
+- *Case* com cabos para 2 pilhas 18650 em paralelo.
 - Cabo micro USB (usar apenas para passar a programação, com as pilhas desconectadas).
 - Módulo Bluetooth HC-05.
 - Anel o-ring ou elástico para o câmbio.
@@ -81,6 +119,8 @@ A realimentação da posição do atuador do CVT é realizada por meio de um sen
 2. Banco de Informação de Hardware: [BitDogLabV7_BIH](https://docs.google.com/document/d/13-68OqiU7ISE8U2KPRUXT2ISeBl3WPhXjGDFH52eWlU/edit?tab=t.0)
 3. LEGO Continuous Variable Transmission (CVT) V3 [Link YouTube](https://www.youtube.com/watch?v=sa60egMprYc)
 4. LEGO Simple CVT (Continuously Variable Transmission) [Link YouTube](https://www.youtube.com/watch?v=1y5fQr0dDVg)
+5. Time-of-Flight (ToF) proximity sensor and ambient light sensing (ALS) module [VL6180X](https://www.st.com/en/imaging-and-photonics-solutions/vl6180x.html)
+6. Using one or more VL6180X 20cm Time-of-Flight proximity sensor with Arduino [Link YouTube](https://www.youtube.com/watch?v=_H9D0czQpSI)
 
 ---
 ## 📄LICENÇA
