@@ -8,9 +8,9 @@
 
 **Professor:** Eric Rohmer
 
-* **Proposta de Projeto**: [Proposta em G-Docs](https://docs.google.com/document/d/12xUf4pp4VCcdJPwbZHKw6q6G0AQpYL8BC8JdEnKDbEA/edit?usp=sharing) (acesso "Comentador" para UNICAMP)
-* **Relatório de projeto (in-work)**: [Relatório em G-Docs](https://docs.google.com/document/d/11B9UFEimS15q4Ivua8mCu4cjH7NtBMuLyvma5xU35qU/edit?usp=sharing) (acesso "Comentador" para UNICAMP)
-* **Demonstração do projeto no YouTube (in-work)**: [Vídeo](https://youtube.com/shorts/MMiuudLj5G8)
+* **Proposta de projeto**: [Proposta em G-Docs](https://docs.google.com/document/d/12xUf4pp4VCcdJPwbZHKw6q6G0AQpYL8BC8JdEnKDbEA/edit?usp=sharing) (acesso "Comentador" para UNICAMP)
+* **Relatório de projeto**: [Relatório em G-Docs](https://docs.google.com/document/d/11B9UFEimS15q4Ivua8mCu4cjH7NtBMuLyvma5xU35qU/edit?usp=sharing) (acesso "Comentador" para UNICAMP)
+* **Demonstração do projeto no YouTube**: [Vídeo](https://youtube.com/shorts/MMiuudLj5G8)
 
 ---
 ## ⚙️ DESCRIÇÃO DO SISTEMA (v2)
